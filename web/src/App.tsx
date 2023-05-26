@@ -1,8 +1,10 @@
 
 import {ThemeProvider} from 'styled-components'
 import { defaultTheme } from './styles/theme/defaultTheme'
-import {BrowserRouter,Route, Routes } from 'react-router-dom'
-import HomePage from './pages/Home'
+import {BrowserRouter} from 'react-router-dom'
+import { Router } from './Router'
+import { GlobalStyle } from './styles/global'
+
 
 
 function App() {
@@ -11,11 +13,9 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage/>}/> 
-          <Route path="/new" element={<h1>Olá</h1>}/>
-        </Routes>
+        <Router/>
       </BrowserRouter>
+      <GlobalStyle />
     </ThemeProvider>
   )
 }

@@ -1,13 +1,14 @@
 import {
   Container,
   Title,
-  Button,
   Image,
   LeftContainer,
   RightContainer,
   SubTitle,
-  ButtonBox,
+  Description,
+  ButtonTest,
 } from "./styles";
+import { MdLogin } from "react-icons/md";
 
 import { Link } from "react-router-dom";
 
@@ -15,15 +16,14 @@ export default function Home() {
   return (
     <Container>
       <LeftContainer>
-        <Title>O mapa local de sua cidade</Title>
-        <SubTitle>Encontre no comércio local tudo o que precisa!</SubTitle>
+        <Title>MyWay</Title>
+        <SubTitle>O mapa local de sua cidade</SubTitle>
+        <Description>Encontre no comércio local tudo o que você precisa!</Description>
 
-        <Link to="/new">
-          <Button>
-            <ButtonBox>{">"}</ButtonBox>
-            Cadastre um ponto comercial
-          </Button>
+        <Link className="linkContainer" to="/new">
+          <ButtonTest><MdLogin size={24}/><p>Cadastre um ponto comercial</p></ButtonTest>
         </Link>
+ 
       </LeftContainer>
 
       <RightContainer>

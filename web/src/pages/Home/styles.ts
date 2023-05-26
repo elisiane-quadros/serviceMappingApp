@@ -13,60 +13,40 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 54px;
-  color: ${(props) => props.theme.purpleDark};
+  font-size: 50px;
+  font-weight: bold;
+  color: ${(props) => props.theme.red};
   padding-bottom: 50px;
+  text-align: center;
+  text-shadow: 2px 2px 4px #322153;
+  max-width: 500px;
+`;
+
+export const SubTitle = styled.h2`
+  font-size: 40px;
+  color: ${(props) => props.theme.purpleDark};
+  padding-bottom: 20px;
   text-align: center;
 
   max-width: 500px;
 `;
 
-export const SubTitle = styled.p`
+export const Description = styled.p`
   font-size: 24px;
   padding-bottom: 50px;
   text-align: center;
   max-width: 500px;
 `;
-
-export const ButtonBox = styled.div`
-  background-color: ${(props) => props.theme.purple};
-  color: ${(props) => props.theme.white};
-  height: 50px;
-  width: 40px;
-
-  font-size: 30px;
-
-  position: absolute;
-  left: 0;
-  top: 0;
-  border-radius: 5px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Button = styled.button`
-  background-color: ${(props) => props.theme.purpleDark};
-  color: ${(props) => props.theme.white};
-  height: 50px;
-  border: none;
-  border-radius: 5px;
-
-  position: relative;
-  padding-left: 50px;
-
-  &:hover {
-    filter: opacity(0.9);
-  }
-`;
-
 export const LeftContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  & .linkContainer {
+    text-decoration: none;
+  }
 `;
 
 export const RightContainer = styled.div`
@@ -81,3 +61,32 @@ export const Image = styled.img.attrs(() => ({
 }))`
   width: 50%;
 `;
+
+export const ButtonTest = styled.button`
+  background: ${(props) => props.theme.purple};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: none;  
+  cursor: pointer;
+
+  &:hover {
+    filter: opacity(0.9);
+  }
+
+  p {
+    background: ${(props) => props.theme.purpleDark};
+    color: ${(props) => props.theme.white};
+    font-size: 0.875rem;
+    padding: 1rem 1rem 1rem 1rem;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+
+  svg {
+    background: ${(props) => props.theme.purple};
+    color: ${(props) => props.theme.white};
+    margin: 0 0.75rem 0 0.75rem;
+  }
+`
