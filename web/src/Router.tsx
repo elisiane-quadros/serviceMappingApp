@@ -1,11 +1,12 @@
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
+import Register from './pages/Register'
 
 export const Router = () => {
   return(
     <Routes>
       <Route path="/" element={<Home/>}/> 
-      <Route path="/new" element={<h1>Olá</h1>}/>
+      <Route path="/register" element={<Register/>}/>
     </Routes>
   )
 }

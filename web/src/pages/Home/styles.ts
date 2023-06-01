@@ -18,7 +18,7 @@ export const Title = styled.h1`
   color: ${(props) => props.theme.red};
   padding-bottom: 50px;
   text-align: center;
-  text-shadow: 2px 2px 4px #322153;
+  text-shadow: 1px 1px 2px #322153;
   max-width: 500px;
 `;
 

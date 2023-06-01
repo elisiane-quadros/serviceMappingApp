@@ -6,11 +6,23 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    font-size:100%;
+    
   }
+
+  :focus {
+      outline: 0;
+  }
+
+  label {
+  color: #6c6c80;
+  }
+
   body {
     background: ${(props) => props.theme.background};
     
   }
+  
   html {
    
 

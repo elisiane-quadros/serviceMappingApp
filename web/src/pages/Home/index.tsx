@@ -20,7 +20,7 @@ export default function Home() {
         <SubTitle>O mapa local de sua cidade</SubTitle>
         <Description>Encontre no comércio local tudo o que você precisa!</Description>
 
-        <Link className="linkContainer" to="/new">
+        <Link className="linkContainer" to="/register">
           <ButtonTest><MdLogin size={24}/><p>Cadastre um ponto comercial</p></ButtonTest>
         </Link>
  
