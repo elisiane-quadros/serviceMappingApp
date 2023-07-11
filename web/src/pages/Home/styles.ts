@@ -3,14 +3,14 @@ import styled from 'styled-components'
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: url("./home-background.svg") no-repeat 700px bottom;
+  background: url('./home-background.svg') no-repeat 700px bottom;
   background-color: ${(props) => props.theme.gray100};
   display: flex;
 
   @media (max-width: 768px) {
     flex-direction: column;
   }
-`;
+`
 
 export const Title = styled.h1`
   font-size: 50px;
@@ -20,7 +20,7 @@ export const Title = styled.h1`
   text-align: center;
   text-shadow: 1px 1px 2px #322153;
   max-width: 500px;
-`;
+`
 
 export const SubTitle = styled.h2`
   font-size: 40px;
@@ -29,14 +29,14 @@ export const SubTitle = styled.h2`
   text-align: center;
 
   max-width: 500px;
-`;
+`
 
 export const Description = styled.p`
   font-size: 24px;
   padding-bottom: 50px;
   text-align: center;
   max-width: 500px;
-`;
+`
 export const LeftContainer = styled.div`
   display: flex;
   flex: 1;
@@ -47,20 +47,20 @@ export const LeftContainer = styled.div`
   & .linkContainer {
     text-decoration: none;
   }
-`;
+`
 
 export const RightContainer = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 export const Image = styled.img.attrs(() => ({
-  src: "home-image.svg",
+  src: 'home-image.svg',
 }))`
   width: 50%;
-`;
+`
 
 export const ButtonTest = styled.button`
   background: ${(props) => props.theme.purple};
@@ -68,7 +68,7 @@ export const ButtonTest = styled.button`
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  border: none;  
+  border: none;
   cursor: pointer;
 
   &:hover {

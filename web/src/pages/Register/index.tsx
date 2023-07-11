@@ -9,29 +9,59 @@ import {
   FormTitle,
   MapContainer,
   Section,
-} from "./styles";
-import Input from "../../components/Input";
+} from './styles'
+import Input from '../../components/Input'
+import useGetLocation from '../../hooks/useGetLocation'
 import { useState } from 'react'
-import { LatLngExpression } from "leaflet"
-import { TileLayer, Marker } from "react-leaflet";
-import { categories } from "./categories";
+import { LatLngExpression, LeafletMouseEvent } from 'leaflet'
+import { TileLayer, Marker } from 'react-leaflet'
+import { categories } from './categories'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
-export default function Register() {
+export default function New() {
+  const navigate = useNavigate()
   const [formValues, setFormValues] = useState({
     name: '',
     description: '',
     contact: '',
-    category: ''
+    category: '',
+    coords: [0, 0],
   })
+  const { coords } = useGetLocation()
+
+  async function onSubmit(e: any) {
+    e.preventDefault()
+    const request = await fetch('http://localhost:3000/store', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...formValues,
+        latitude: formValues.coords[0],
+        longitude: formValues.coords[1],
+      }),
+    })
+
+    if (request.ok) {
+      toast('Estabelecimento gravado com sucesso!', {
+        type: 'success',
+        autoClose: 2000,
+        onClose: () => navigate('/'),
+      })
+    }
+  }
+
+  if (!coords) {
+    return <h1>Obtendo localização ...</h1>
+  }
+
   return (
     <Container>
-      <Form>
-        <FormTitle>
-          Cadastro do comércio local
-        </FormTitle>
-        <Section>
-          Dados
-        </Section>
+      <Form onSubmit={onSubmit}>
+        <FormTitle>Cadastro do comércio local</FormTitle>
+        <Section>Dados</Section>
         <Input
           label="Nome do local"
           name="name"
@@ -52,28 +82,35 @@ export default function Register() {
         />
         <Section>Endereço</Section>
 
-        <MapContainer center={{
-          lat:12,
-          lng: 23
-        } as LatLngExpression}
-        zoom={13}
-        whenCreated={() => {}}
+        <MapContainer
+          center={{ lat: coords[0], lng: coords[1] } as LatLngExpression}
+          zoom={13}
+          whenReady={(map) => {
+            map.target.on('click', (event: LeafletMouseEvent) => {
+              setFormValues((prev) => ({
+                ...prev,
+                coords: [event.latlng.lat, event.latlng.lng],
+              }))
+            })
+          }}
         >
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <Marker position={[12,23] as LatLngExpression} />
+          <Marker
+            position={
+              [formValues.coords[0], formValues.coords[1]] as LatLngExpression
+            }
+          />
         </MapContainer>
-
-        <Section>Categorias</Section>
-
+        <Section>Categoria</Section>
         <CategoryContainer>
           {categories.map((category) => (
             <CategoryBox
               key={category.key}
               onClick={() => {
-                setFormValues((prev) => ({ ...prev, category: category.key }));
+                setFormValues((prev) => ({ ...prev, category: category.key }))
               }}
               isActive={formValues.category === category.key}
             >
@@ -82,6 +119,9 @@ export default function Register() {
             </CategoryBox>
           ))}
         </CategoryContainer>
+        <ButtonContainer>
+          <Button type="submit">Salvar</Button>
+        </ButtonContainer>
       </Form>
     </Container>
   )

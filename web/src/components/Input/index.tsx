@@ -1,11 +1,11 @@
-import React, { ChangeEvent } from 'react';
-import { Container, InputStyled } from './styles';
+import React, { ChangeEvent } from 'react'
+import { Container, InputStyled } from './styles'
 
 interface InputProps {
-  label: string;
-  name: string;
-  value: string;
-  onChange: (updatedState: (prevState: any) => any) => void;
+  label: string
+  name: string
+  value: string
+  onChange: (updatedState: (previousState: any) => any) => void
 }
 
 const Input: React.FC<InputProps> = ({ label, name, value, onChange }) => {
@@ -13,8 +13,8 @@ const Input: React.FC<InputProps> = ({ label, name, value, onChange }) => {
     onChange((previousState) => ({
       ...previousState,
       [name]: ev.target.value,
-    }));
-  };
+    }))
+  }
 
   return (
     <Container>
@@ -26,7 +26,7 @@ const Input: React.FC<InputProps> = ({ label, name, value, onChange }) => {
         onChange={handleInputChange}
       />
     </Container>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input
